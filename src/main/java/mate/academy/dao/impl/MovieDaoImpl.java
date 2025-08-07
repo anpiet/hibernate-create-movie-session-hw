@@ -37,6 +37,11 @@ public class MovieDaoImpl implements MovieDao {
     }
 
     @Override
+    public Movie create(Movie entity) {
+        return null;
+    }
+
+    @Override
     public Optional<Movie> get(Long id) {
         try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
             return Optional.ofNullable(session.get(Movie.class, id));
@@ -54,5 +59,10 @@ public class MovieDaoImpl implements MovieDao {
         } catch (Exception e) {
             throw new DataProcessingException("Can't get all movies", e);
         }
+    }
+
+    @Override
+    public void remove(Movie entity) {
+
     }
 }

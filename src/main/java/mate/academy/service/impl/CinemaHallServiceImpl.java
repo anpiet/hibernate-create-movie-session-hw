@@ -1,6 +1,8 @@
 package mate.academy.service.impl;
 
+import java.util.List;
 import mate.academy.exception.DataProcessingException;
+import mate.academy.lib.Service;
 import mate.academy.model.CinemaHall;
 import mate.academy.service.CinemaHallService;
 import mate.academy.util.HibernateUtil;
@@ -9,8 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.util.List;
-
+@Service
 public class CinemaHallServiceImpl implements CinemaHallService {
     @Override
     public CinemaHall add(CinemaHall cinemaHall) {
@@ -47,8 +48,9 @@ public class CinemaHallServiceImpl implements CinemaHallService {
     @Override
     public List<CinemaHall> getAll() {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        try (Session session = sessionFactory.getCurrentSession()){
-            Query<CinemaHall> cinemaHallQuery = session.createQuery("from CinemaHall", CinemaHall.class);
+        try (Session session = sessionFactory.getCurrentSession()) {
+            Query<CinemaHall> cinemaHallQuery =
+                    session.createQuery("from CinemaHall", CinemaHall.class);
             return cinemaHallQuery.getResultList();
         } catch (Exception e) {
             throw new DataProcessingException("Can't get all CinemaHalls", e);
