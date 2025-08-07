@@ -1,10 +1,13 @@
 package mate.academy;
 
+import mate.academy.lib.Inject;
 import mate.academy.model.Movie;
 import mate.academy.service.MovieService;
+import mate.academy.service.impl.MovieServiceImpl;
 
 public class Main {
     public static void main(String[] args) {
+
         MovieService movieService = null;
 
         Movie fastAndFurious = new Movie("Fast and Furious");
