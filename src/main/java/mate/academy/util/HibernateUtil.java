@@ -21,7 +21,6 @@ public class HibernateUtil {
             Configuration configuration = new Configuration();
             configuration.configure("hibernate.cfg.xml");
 
-            // Zarejestruj encje
             configuration.addAnnotatedClass(Movie.class);
             configuration.addAnnotatedClass(CinemaHall.class);
             configuration.addAnnotatedClass(MovieSession.class);
